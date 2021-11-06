@@ -9,6 +9,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import LaptopIcon from '@mui/icons-material/Laptop';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import Detail from './components/Detail'
 const useStyles=makeStyles((theme)=>({
     mainRoot:{
        display:"flex",
@@ -37,12 +38,12 @@ function App() {
     <div className="App">
         {mobile && <Navbar options={options}/>}
         <main>
-           <Grid container>
-              <Grid  md={3} sx={{display:{xs:"none",md:"block"}}}>
+           <Grid container spacing={2}>
+              <Grid  md={2} sx={{display:{xs:"none",md:"block"}}}>
                   <Sidebar options={options}/>
               </Grid>
-              <Grid item xs={12} md={9}>
-                
+              <Grid item xs={12} md={10}>
+                  <Detail />
               </Grid>
            </Grid>
         </main>
