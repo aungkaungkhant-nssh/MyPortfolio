@@ -18,6 +18,11 @@ const useStyles=makeStyles((theme)=>({
         "& a":{
             padding:"15px",
         },
+        '@media screen and (max-width: 600px)': {
+            "& a": {
+                padding:"8px",
+            },
+        },
     }
 }))
 const socialIcons=[

@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {List, ListItem,ListItemText,ListItemIcon} from '@mui/material'
+import { ValueContext } from '../App'
 
 function CList({options}) {
+    const {index}=useContext(ValueContext)
     return (
         <List>
             {
-                options.map((option)=>(
-                <ListItem button>
+                options.map((option,index)=>(
+                <ListItem button sx={{marginBottom:"10px"}}>
                     <ListItemIcon>
                         {option.icon}
                     </ListItemIcon>
@@ -14,7 +16,7 @@ function CList({options}) {
                 </ListItem>
                 ))
             }
-           
+        
          </List>
     )
 }

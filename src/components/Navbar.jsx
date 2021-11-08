@@ -6,7 +6,7 @@ import CTab from '../controls/CTab'
 function Navbar({options}) {
     return (
        <Paper>
-           <CTab options={options} iconsPosition="start"/>
+           <CTab options={options} iconPosition="top" orientation="horizontal"  variant="scrollable" />
        </Paper>
     )
 }

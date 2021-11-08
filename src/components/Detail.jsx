@@ -1,23 +1,31 @@
 import React from 'react'
 import {Paper,Avatar} from '@mui/material'
 import {makeStyles} from '@mui/styles'
-import HomeDetail from './HomeDetail'
+// import HomeDetail from './HomeDetail'
+// import AboutDetail from './AboutDetail'
 const useStyles=makeStyles((theme)=>({
     detailRoot:{
-       height:"380px",
-       marginTop:"10px"
+       minHeight:"380px",
+       marginTop:"10px",
+       
     },
-    socialIcon:{
-
-    }
+    // '@media screen and (max-width: 600px)': {
+    //     detailRoot: {
+    //       maxHeight:"370px",
+    //       overflowY:"scroll"
+    //     },
+    //   },
     
 }))
-function Detail() {
+function Detail({options,index}) {
     const classes=useStyles()
     return (
         <Paper>
+            
             <div className={classes.detailRoot}>
-                    <HomeDetail />
+                {
+                    options[index].component
+                }
             </div>
         </Paper>
     )
