@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import {Typography} from '@mui/material'
 import {makeStyles} from '@mui/styles'
 import InfoIcon from '@mui/icons-material/Info';
+import CHeader from '../controls/CHeader';
 const useStyles=makeStyles((theme)=>({
     mainRoot:{
         display:"flex",
@@ -25,9 +26,7 @@ function AboutDetail({content}) {
    
     return (
         <div className={classes.mainRoot}>
-            <Typography variant="h4" sx={{color:"#1c92d2"}}>
-                <InfoIcon />  About
-            </Typography>
+            <CHeader title="About" icon={ <InfoIcon sx={{ fontSize: 35 }}/> }/>
             <div className={classes.content}>
                 <Typography variant="p" sx={{letterSpacing:'0.7px',lineHeight:"29px",textAlign:"center",color:"#757575"}}>
                     {content.about}

@@ -6,6 +6,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 
 import HomeDetail from '../components/HomeDetail';
 import AboutDetail from '../components/AboutDetail'
+import SkillDetail from '../components/SkillDetail';
 function useData() {
     const [years,setYears]=useState(new Date().getFullYear()-2002)
     const [currentLanguage,setCurrentLanguage]=useState(["React","Laravel","Linux Basic"])
@@ -21,11 +22,19 @@ function useData() {
     const options=[
         {value:"home",label:"Home",icon:<HomeIcon />,component:<HomeDetail />},
         {value:"about",label:"About",icon:<InfoIcon />,component:<AboutDetail content={content}/>},
-        {value:"skill",label:"Skill",icon:<LaptopIcon />},
+        {value:"skill",label:"Skills",icon:<LaptopIcon />,component:<SkillDetail />},
         {value:"project",label:"Project",icon:<GitHubIcon />},
       ]
-      
-    return [options]
+    const skills=[
+      {language:"HTML",value:"80",color:"error",percent:"80%"},
+      {language:"CSS",value:"60",color:"secondary",percent:"60%"},
+      {language:"JS",value:"70",color:"warning",percent:"70%"},
+      {language:"PHP",value:"50",color:"primary",percent:"50%"},
+      {language:"Vue Js",value:"75",color:"inherit",percent:"75%"},
+      {language:"React Js",value:"65",color:"primary",percent:"65%"},
+      {language:"Laravel",value:"60",color:"error",percent:"60%"}
+    ]
+    return [options,skills]
 }
 
 export default useData
