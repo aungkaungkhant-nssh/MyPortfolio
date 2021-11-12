@@ -8,7 +8,8 @@ import AboutDetail from '../components/AboutDetail'
 import SkillDetail from '../components/SkillDetail';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import GirlFriendDetail from '../components/GirlFriendDetail';
-
+import ProjectDetail from '../components/ProjectDetail';
+import {Button} from '@mui/material';
 let startLove=new Date(2020,9,7).getTime()
 let now=new Date().getTime()
 let t=now-startLove;
@@ -22,7 +23,8 @@ function useData() {
     const [years,setYears]=useState(new Date().getFullYear()-2002)
     const [anni,setAnni]=useState({yr,mth,dy})
     const [currentLanguage,setCurrentLanguage]=useState(["React","Laravel","Linux Basic"])
-    const [futureLanguage,setFutureLanguage]=useState(["React Native","PHP Deep learning"])
+    const [futureLanguage,setFutureLanguage]=useState(["React Native","PHP Deep learning"]);
+    const [language,setLanguage]=useState("all");
     const content={
       about:`
       I'm Aung Kaung Khant and ${years} years old.Lived in Pyin Oo Lwin.I was born in Hpa-an.
@@ -85,12 +87,37 @@ function useData() {
         title: '12',
       },
     ];
+    const languages=[
+      {key:"all",value:"All"},
+      {key:"js",value:"JS"},
+      {key:"php",value:"PHP"},
+      {key:"vuejs",value:"Vue Js"},
+      {key:"laravel",value:"Laravel"},
+      {key:"reactjs",value:"React"},
+    ]
+    const changeLanguage=(lan)=>{
+        setLanguage(lan)
+    }
+    const btns=languages.map((lan)=>(
+      <Button key={lan.key} onClick={()=>changeLanguage(lan.key)}>{lan.value}</Button>
+    ))
+    const buttons = [
+      ...btns
+    ];
+    const projects=[
+      {category:"js",links:"http://jsproject",name:"Jspj"},
+      {category:"php",links:"http://phpproject",name:"Phppj"},
+      {category:"vuejs",links:"http://vuejsproject",name:"Vuepj"},
+      {category:"reactjs",links:"http://reactjsproject",name:"Reactpj"},
+      {category:"laravel",links:"http://ro-system.mms-student.com",name:"Restaurant Order System"},
+      
+    ]
     const options=[
         {value:"home",label:"Home",icon:<HomeIcon />,component:<HomeDetail />},
         {value:"about",label:"About",icon:<InfoIcon />,component:<AboutDetail content={content}/>},
         {value:"skill",label:"Skills",icon:<LaptopIcon />,component:<SkillDetail />},
         {value:"girl friend",label:"Girl Friend",icon:<FavoriteBorderIcon />,component:<GirlFriendDetail gf={gf} anni={anni} itemData={itemData}/>},
-        {value:"project",label:"Project",icon:<GitHubIcon />},
+        {value:"project",label:"Project",icon:<GitHubIcon />,component:<ProjectDetail buttons={buttons} projects={projects} language={language}/>},
       ]
     const skills=[
       {language:"HTML",value:"80",color:"error",percent:"80%"},
@@ -101,7 +128,7 @@ function useData() {
       {language:"React Js",value:"65",color:"primary",percent:"65%"},
       {language:"Laravel",value:"60",color:"error",percent:"60%"}
     ]
-   
+    
     return [options,skills]
 }
 
